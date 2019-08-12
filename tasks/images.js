@@ -1,4 +1,4 @@
-import {src, dest} from 'gulp'
+import {src, dest} from 'gulp';
 
 import imagemin         from 'gulp-imagemin'; // Minify PNG, JPEG, GIF and SVG images with imagemin.
 import imageminPngquant from 'imagemin-pngquant';

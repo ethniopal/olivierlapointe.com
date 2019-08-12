@@ -8,7 +8,7 @@ import { config as webpackConfig } from './webpack'
 const browser = Browser.create()
 const bundler = webpack(webpackConfig)
 
-export function server() {
+function server() {
 
     let config = {
         server: 'src',
@@ -21,4 +21,8 @@ export function server() {
     browser.init(config)
 
     gulp.watch('src/js/*.js').on('change', () => browser.reload())
+}
+
+export {
+    server, browser
 }
