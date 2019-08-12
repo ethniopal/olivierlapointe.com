@@ -10,10 +10,10 @@ let config = {
 
     output: {
         filename: './js/bundle.js',
-        path: path.resolve(__dirname, '../site')
+        path: path.resolve(__dirname, '../src')
     },
 
-    context: path.resolve(__dirname, '../site'),
+    context: path.resolve(__dirname, '../src'),
 
     plugins: isProduction ? [ new webpack.optimize.UglifyJsPlugin() ] : []
 }
