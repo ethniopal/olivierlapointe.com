@@ -20,6 +20,11 @@
     "browser-sync": "^2.26.3",
     "del": "^5.0.0",
     "gulp": "^4.0.0",
+    "gulp-imagemin": "^6.0.0",
+    "imagemin-giflossy": "^5.1.10",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-pngquant": "^8.0.0",
+    "imagemin-zopfli": "^6.0.0",
     "webpack": "^4.30.0",
     "webpack-dev-middleware": "^3.6.2"
   }
