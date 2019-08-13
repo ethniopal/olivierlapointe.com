@@ -1,5 +1,5 @@
 import {config} from "./config.js";
-import {src, dest} from 'gulp';
+import {src, dest, lastRun} from 'gulp';
 
 import imagemin         from 'gulp-imagemin'; // Minify PNG, JPEG, GIF and SVG images with imagemin.
 import imageminPngquant from 'imagemin-pngquant';
@@ -7,6 +7,7 @@ import imageminZopfli   from 'imagemin-zopfli';
 import imageminMozjpeg  from 'imagemin-mozjpeg'; //need to run 'brew install libpng'
 import imageminGiflossy from 'imagemin-giflossy';
 
+import cache            from 'gulp-cache';
 import notify           from 'gulp-notify' //afficher notification
 
 

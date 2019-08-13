@@ -1,3 +1,5 @@
+import {basePath, srcDir, distDir, config as configData} from "./config.js";
+
 import path    from 'path'
 import webpack from 'webpack'
 import process from 'process'
@@ -5,15 +7,15 @@ import process from 'process'
 const isProduction = (process.env.NODE_ENV === 'production')
 
 let config = {
-
-    entry: './js/main.js',
+    mode: isProduction ? "production" : "development",
+    entry: configData.js.src + '/main.js',
 
     output: {
-        filename: './js/bundle.js',
-        path: path.resolve(__dirname, '../src')
+        filename: configData.js.src + '/bundle.js',
+        path: path.resolve(__dirname, '../' + srcDir)
     },
 
-    context: path.resolve(__dirname, '../src'),
+    context: path.resolve(__dirname, '../' + srcDir),
 
     plugins: isProduction ? [ new webpack.optimize.UglifyJsPlugin() ] : []
 }
