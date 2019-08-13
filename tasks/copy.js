@@ -14,7 +14,6 @@ function copy() {
         .pipe(dest(config.theme.dist))
         .pipe(notify({message: 'TASK: Copy completed! 💯', onLast: true}));
 
-
 }
 
 export {
