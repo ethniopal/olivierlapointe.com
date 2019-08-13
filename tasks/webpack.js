@@ -34,6 +34,18 @@ let config = {
         })
     ],
 
+    optimization:{
+      splitChunks: { //Permets d'importer des librairies nodes si utilisé dans le projet afin d'éviter de les avoir dans plus d'un bundle
+          cacheGroups: {
+              node_vendors: {
+                  test: /[\\/]node_modules[\\/]/,
+                  chunks: 'all',
+                  priority: 1
+              }
+          }
+      }
+    },
+
     module: {
         rules: [
             {
