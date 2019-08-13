@@ -8,6 +8,7 @@ import cssnano      from "cssnano";
 import mmq          from 'gulp-merge-media-queries'; // Combine matching media queries into one media query definition.
 
 import {browser}    from 'server' //pour le live reload
+import notify    from 'notify' //afficher notification
 
 
 /**
