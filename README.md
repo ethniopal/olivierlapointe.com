@@ -1,13 +1,19 @@
 # Gulp 4 avec Webpack
 Ce repo est une base optimisé des avantages de gulp et webpack réuni.
 
+## Comment le personnaliser
+Toutes les tâches se situe dans le répertoire **tasks**.<br>
+Pour modifier les variables, modifier le fichier **tasks/config.js**.<br>
+Pour modifier les tâches à exécuter/ fichier à observer, modifier le fichier **tasks/index.js**.<br>
+
+
+
 ## Comment l'utiliser
-Télécharge les packages npm et execute le gulp
+Télécharge les packages npm et exécute le gulp / webpack
 ```
 npm install
 npm run dev
 ```
-
 
 Pour réinitialiser la structure initial
 ```

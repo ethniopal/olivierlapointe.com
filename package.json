@@ -1,7 +1,7 @@
 {
   "name": "gulp4-webpack",
   "version": "1.0.0",
-  "description": "A modern ES6 Gulp workflow combined with Webpack",
+  "description": "ES6 Gulp workflow combiné avec Webpack",
   "scripts": {
     "init": "gulp --require @babel/register --gulpfile tasks --mode development",
     "dev": "gulp --require @babel/register --gulpfile tasks --mode development",
