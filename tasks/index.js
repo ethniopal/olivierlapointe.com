@@ -18,13 +18,12 @@ function watchFiles() {
     watch(css.src + '/**/*.scss', styles);
     watch(theme.src + '/**/*', series(copy, browser.reload()));
     watch(img.src + '/**/*', series(optimiseImages, browser.reload()));
-    //pour le JS, voir le webpack
-
+    //pour la gestion du JS, voir le fichier webpack
 }
 
 
 export const init  = series(cleanInit, cleanDist, generateSrcDirectory );
 export const dev   = series(parallel(styles, copy, optimiseImages), server, watchFiles );
-export const build = series( scripts );
+export const build = series( cleanDist, parallel(styles, copy, optimiseImages), scripts );
 
 export default dev;

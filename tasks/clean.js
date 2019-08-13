@@ -9,7 +9,7 @@ import del from 'del'
  * @returns {*}
  */
 function cleanDist() {
-    return del(basePath + distDir + '/*');
+    return del(config.theme.dist);
 }
 
 
