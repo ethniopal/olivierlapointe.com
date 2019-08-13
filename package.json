@@ -18,10 +18,10 @@
     "@babel/preset-env": "^7.4.3",
     "@babel/register": "^7.4.0",
     "autoprefixer": "^9.6.1",
-    "browser-sync": "^2.26.3",
+    "browser-sync": "^2.26.7",
     "cssnano": "^4.1.10",
     "del": "^5.0.0",
-    "gulp": "^4.0.0",
+    "gulp": "^4.0.2",
     "gulp-imagemin": "^6.0.0",
     "gulp-merge-media-queries": "^0.2.1",
     "gulp-notify": "^3.2.0",
@@ -32,7 +32,7 @@
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^8.0.0",
     "imagemin-zopfli": "^6.0.0",
-    "webpack": "^4.30.0",
-    "webpack-dev-middleware": "^3.6.2"
+    "webpack": "^4.39.1",
+    "webpack-dev-middleware": "^3.7.0"
   }
 }
