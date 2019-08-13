@@ -1,3 +1,4 @@
+import {config} from "./config.js";
 import {src, dest} from 'gulp';
 
 import imagemin         from 'gulp-imagemin'; // Minify PNG, JPEG, GIF and SVG images with imagemin.
@@ -6,12 +7,14 @@ import imageminZopfli   from 'imagemin-zopfli';
 import imageminMozjpeg  from 'imagemin-mozjpeg'; //need to run 'brew install libpng'
 import imageminGiflossy from 'imagemin-giflossy';
 
+import notify           from 'gulp-notify' //afficher notification
+
 
 
 function optimiseImages (){
     const extImg = 'png,jpg,jpeg,gif,svg,svgz,webp';
-    const srcImg = './src/img/**/*.{' + extImg + ',' + extImg.toUpperCase() + '}';
-    const distImg = './www/img';
+    const srcImg = config.img.src + '/**/*.{' + extImg + ',' + extImg.toUpperCase() + '}';
+    const distImg = config.img.dist;
 
     return src(srcImg, {since: lastRun(optimiseImages)})
         .pipe(cache(imagemin([

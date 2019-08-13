@@ -1,3 +1,4 @@
+import {basePath, srcDir, distDir, config} from "./config.js";
 import {src, dest} from 'gulp'
 import del from 'del'
 
@@ -8,7 +9,7 @@ import del from 'del'
  * @returns {*}
  */
 function cleanDist() {
-    return del('./www/*');
+    return del(basePath + distDir + '/*');
 }
 
 
@@ -19,7 +20,7 @@ function cleanDist() {
  */
 function cleanInit() {
     return del(
-        './src/*'
+        basePath + srcDir + '/*'
     );
 }
 
@@ -30,14 +31,13 @@ function cleanInit() {
  */
 function generateSrcDirectory() {
     return src('*.*', {read: false})
-        .pipe(dest('./src/css'))
-        .pipe(dest( './src/img'))
-        .pipe(dest( './src/js'))
-        .pipe(dest( './src/js/modules'))
-        .pipe(dest( './src/fonts'))
-        .pipe(dest( './www/'))
-        .pipe(dest( './docs/'))
-        .pipe(dest( './templates/'))
+        .pipe(dest( config.css.src ))
+        .pipe(dest( config.img.src ))
+        .pipe(dest( config.js.src ))
+        .pipe(dest( config.js.src + '/modules' ))
+        .pipe(dest( basePath + distDir ))
+        .pipe(dest( basePath +'docs/' ))
+        .pipe(dest( basePath +'templates/'))
 }
 
 

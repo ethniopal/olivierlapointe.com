@@ -1,3 +1,4 @@
+import {config} from "./config.js";
 import {src, dest} from 'gulp';
 
 import sass         from "gulp-sass";
@@ -7,8 +8,9 @@ import sourcemaps   from "gulp-sourcemaps";
 import cssnano      from "cssnano";
 import mmq          from 'gulp-merge-media-queries'; // Combine matching media queries into one media query definition.
 
-import {browser}    from 'server' //pour le live reload
-import notify    from 'notify' //afficher notification
+import {browser}    from './server' //pour le live reload
+import notify       from 'gulp-notify' //afficher notification
+
 
 
 /**
@@ -28,9 +30,8 @@ import notify    from 'notify' //afficher notification
 function styles() {
 
     return src([
-        './scss/style.scss',
-        './scss/**/*.scss',
-
+        config.css.src + "/style.scss",
+        config.css.src + "/**/*.scss",
         '!./scss/_bootstrap/bootstrap.scss',
         '!./scss/_bootstrap/bootstrap-grid.scss',
         '!./scss//_bootstrap/bootstrap-reboot.scss'
@@ -43,7 +44,7 @@ function styles() {
         .pipe(postcss([autoprefixer(), cssnano()]))
         .pipe(sourcemaps.write('./css/sourcemaps'))
 
-        .pipe(dest( './www/style.css'))
+        .pipe(dest( config.css.dist + '/style.css'))
         .pipe(browser.stream())
         .pipe(notify({message: 'TASK: "styles" Completed! 💯', onLast: true}));
 
