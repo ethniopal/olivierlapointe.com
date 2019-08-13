@@ -8,18 +8,54 @@ const isProduction = (process.env.NODE_ENV === 'production')
 
 let config = {
     mode: isProduction ? "production" : "development",
-    entry: './main.js',
+
+    entry: ['./main.js'], //ajoutez les fichiers à bundler
 
     output: {
-        filename: configData.js.src + '/bundle.js',
-        path: path.resolve(__dirname, '../' + distDir + '/js')
+        filename: 'bundle.js',
+        path:  path.resolve(__dirname, '.' + configData.js.dist)
     },
 
-    context: path.resolve(__dirname, '../' + srcDir + '/js'),
+    context: path.resolve(__dirname, '.' + configData.js.src),
 
-    plugins: isProduction ? [ new webpack.optimize.UglifyJsPlugin() ] : []
+    devtool: false,
+    plugins:  [
+        //Inclus les sources maps des fichiers bundler
+        new webpack.SourceMapDevToolPlugin({
+            filename: '[file].map',
+            moduleFilenameTemplate: undefined,
+            fallbackModuleFilenameTemplate: undefined,
+            append: null,
+            module: true,
+            columns: true,
+            lineToLine: false,
+            noSources: false,
+            namespace: ''
+        })
+    ],
+
+    module: {
+        rules: [
+            {
+                test: /\.?js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        cacheDirectory:true,
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            }
+        ]
+    }
+
 }
 
+//Si en production
+if(isProduction){
+    config.plugins.push(new webpack.optimize.UglifyJsPlugin());
+}
 
 function scripts() {
 

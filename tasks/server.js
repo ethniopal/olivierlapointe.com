@@ -13,7 +13,7 @@ function server(done) {
 
     //Configuration du serveur
     let configServer = {
-        open: true,
+        open: false,
         middleware: [
             webpackDevMiddleware(bundler, { /* options */ })
         ],
@@ -36,7 +36,6 @@ function server(done) {
 
     //initie le serveur
     browser.init(configServer);
-    watch(configData.js.src + '/**/*.js').on('change', reload);
     done();
 }
 
