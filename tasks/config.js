@@ -4,13 +4,13 @@ const distDir = 'www';
 
 const config = {
 
-    name: 'theme2019', //sans espace ni de caractère accentué
-    proxy: 'http://dev.start/', //Url local, laisser vide si désire l'utiliser sans sous-domaine ex.: http://dev.test/
-    type: 'wp',  //Valeur possible : wp, laravel, html, react
+    name: 'theme2019', //Nom du thème/projet (sans espace ni de caractère accentué)
+    proxy: '', //Url local, laisser vide si désire l'utiliser sans sous-domaine ex.: http://dev.test/
+    type: '',  //Valeur possible : wp, laravel, html, react
 
     css: {
         src: basePath + srcDir + '/scss',
-        dist: basePath + distDir + '/css',
+        dist: basePath + distDir,
     },
     img: {
         src: basePath + srcDir + '/img',
@@ -20,10 +20,10 @@ const config = {
     js: {
         src: basePath + srcDir + '/js',
         dist: basePath + distDir + '/js',
-        mainFile: 'app',
+        mainFile: 'main.js',
     },
     theme: {
-        src: basePath + srcDir + '/',
+        src: basePath + srcDir,
         dist: basePath + distDir,
     },
 
@@ -31,7 +31,7 @@ const config = {
 
 
 const themeWP = basePath + distDir + '/wp-content/themes/' + config.name; //à modifier si le chemin wordpress change
-const uploadWP = basePath + distDir + '/wp-content/uploads/'; //à modifier si le chemin wordpress change
+const uploadWP = basePath + distDir + '/wp-content/uploads'; //à modifier si le chemin wordpress change
 
 switch (config.type) {
     case 'wp':
@@ -61,6 +61,4 @@ switch (config.type) {
         break;
 }
 
-export {
-    basePath, srcDir, distDir, config, themeWP,  uploadWP
-}
+export { basePath, srcDir, distDir, config, themeWP,  uploadWP };

@@ -33,11 +33,11 @@ import notify       from 'gulp-notify' //afficher notification
 function styles() {
 
     return src([
-        config.css.src + "/style.scss",
+       // config.css.src + "/style.scss",
         config.css.src + "/**/*.scss",
         '!./scss/_bootstrap/bootstrap.scss',
         '!./scss/_bootstrap/bootstrap-grid.scss',
-        '!./scss//_bootstrap/bootstrap-reboot.scss'
+        '!./scss/_bootstrap/bootstrap-reboot.scss'
     ], {allowEmpty: true})
         .pipe(sourcemaps.init())
 
@@ -47,7 +47,7 @@ function styles() {
         .pipe(postcss([autoprefixer(), cssnano()]))
         .pipe(sourcemaps.write('./css/sourcemaps'))
 
-        .pipe(dest( config.css.dist + '/style.css'))
+        .pipe(dest( config.css.dist))
         .pipe(browser.stream())
         .pipe(notify({message: 'TASK: "styles" Completed! 💯', onLast: true}));
 

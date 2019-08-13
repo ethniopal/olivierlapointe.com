@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "ES6 Gulp workflow combiné avec Webpack",
   "scripts": {
-    "init": "gulp --require @babel/register --gulpfile tasks --mode development",
-    "dev": "gulp --require @babel/register --gulpfile tasks --mode development",
-    "build": "gulp build --require @babel/register --gulpfile tasks --mode production"
+    "init": "gulp --require @babel/register --gulpfile tasks",
+    "dev": "gulp --require @babel/register --gulpfile tasks",
+    "build": "gulp build --require @babel/register --gulpfile tasks"
   },
   "repository": {
     "type": "git",
@@ -13,8 +13,7 @@
   },
   "author": "Olivier Lapointe",
   "license": "MIT",
-  "devDependencies": {},
-  "dependencies": {
+  "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
     "@babel/register": "^7.4.0",
@@ -36,5 +35,7 @@
     "imagemin-zopfli": "^6.0.0",
     "webpack": "^4.39.1",
     "webpack-dev-middleware": "^3.7.0"
+  },
+  "dependencies": {
   }
 }

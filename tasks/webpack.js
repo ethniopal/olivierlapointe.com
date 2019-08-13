@@ -8,14 +8,14 @@ const isProduction = (process.env.NODE_ENV === 'production')
 
 let config = {
     mode: isProduction ? "production" : "development",
-    entry: configData.js.src + '/main.js',
+    entry: './main.js',
 
     output: {
         filename: configData.js.src + '/bundle.js',
-        path: path.resolve(__dirname, '../' + srcDir)
+        path: path.resolve(__dirname, '../' + distDir + '/js')
     },
 
-    context: path.resolve(__dirname, '../' + srcDir),
+    context: path.resolve(__dirname, '../' + srcDir + '/js'),
 
     plugins: isProduction ? [ new webpack.optimize.UglifyJsPlugin() ] : []
 }
