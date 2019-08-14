@@ -29,6 +29,12 @@ const config = {
 
 };
 
+const ftp = {
+    host: '184.107.112.54',
+    user: '',
+    pass: '',
+    dir: '/public_html'
+}
 
 const themeWP = basePath + distDir + '/wp-content/themes/' + config.name; //à modifier si le chemin wordpress change
 const uploadWP = basePath + distDir + '/wp-content/uploads'; //à modifier si le chemin wordpress change
@@ -61,4 +67,4 @@ switch (config.type) {
         break;
 }
 
-export { basePath, srcDir, distDir, config, themeWP,  uploadWP };
+export { basePath, srcDir, distDir, config, themeWP,  uploadWP, ftp };

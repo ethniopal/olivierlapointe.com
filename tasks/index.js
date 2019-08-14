@@ -7,6 +7,7 @@ import { cleanInit, cleanDist, generateSrcDirectory }  from './clean';
 import { optimiseImages }  from './images';
 import { styles }  from './css';
 import { copy }  from './copy';
+import { download }  from './download';
 
 
 const {css, js, theme, img} = config;
