@@ -6,6 +6,10 @@ import webpackDevMiddleware from 'webpack-dev-middleware';
 
 import { config as webpackConfig } from './webpack';
 
+import ngrok from 'ngrok';
+
+
+
 const browser = Browser.create();
 const bundler = webpack(webpackConfig);
 
@@ -19,11 +23,20 @@ function server(done) {
         ],
     };
 
+
     //Vérification s'il y a un proxy
     if(configData.proxy.length > 1){
         configServer.proxy = configData.proxy;
+        //Activation de ngrok
+        (async function() {
+            const url = await ngrok.connect(configData.proxy);
+            console.log(" --------------------------------------");
+            console.log("Lien ngrok:", url);
+            console.log(" --------------------------------------\n");
+
+        })();
     }
-    else{
+    else{ //Définition des fichiers qui seront modifé
         configServer.server = {
             baseDir: basePath + distDir + '/'
         };
@@ -36,6 +49,9 @@ function server(done) {
 
     //initie le serveur
     browser.init(configServer);
+
+
+
     done();
 }
 

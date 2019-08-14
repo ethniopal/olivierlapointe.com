@@ -13,6 +13,9 @@
   },
   "author": "Olivier Lapointe",
   "license": "MIT",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
@@ -38,12 +41,10 @@
     "imagemin-zopfli": "^6.0.0",
     "mysql": "^2.17.1",
     "mysqldump": "^3.1.0",
+    "ngrok": "^3.2.5",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "vinyl-ftp": "^0.6.1",
     "webpack": "^4.39.1",
     "webpack-dev-middleware": "^3.7.0"
-  },
-  "dependencies": {
-    "babel-polyfill": "^6.26.0"
   }
 }

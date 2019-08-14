@@ -5,7 +5,7 @@ const distDir = 'www';
 const config = {
 
     name: 'theme2019', //Nom du thème/projet (sans espace ni de caractère accentué)
-    proxy: '', //Url local, laisser vide si désire l'utiliser sans sous-domaine ex.: http://dev.test/
+    proxy: 'http://dev.gulp', //Url local, laisser vide si désire l'utiliser sans sous-domaine ex.: http://dev.test/
     type: '',  //Valeur possible : wp, laravel, html, react
 
     css: {
