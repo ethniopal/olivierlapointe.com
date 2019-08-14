@@ -7,7 +7,9 @@ import { cleanInit, cleanDist, generateSrcDirectory }  from './clean';
 import { optimiseImages }  from './images';
 import { styles }  from './css';
 import { copy }  from './copy';
-import { download }  from './download';
+import { downloadFiles }  from './download';
+import { createDB }  from './bd';
+import { uploadFTP, backupBD }  from './deploy';
 
 
 const {css, js, theme, img} = config;
@@ -23,8 +25,8 @@ function watchFiles () {
 }
 
 
-export const init  = series(cleanInit, cleanDist, generateSrcDirectory );
+export const init  = series(cleanInit, cleanDist, generateSrcDirectory, downloadFiles, createDB );
 export const dev   = series(parallel(styles, copy, optimiseImages, scripts), parallel(watchFiles, server));
-export const build = series( cleanDist, parallel(styles, copy, optimiseImages), scripts );
+export const build = series( cleanDist, parallel(styles, copy, optimiseImages), scripts, uploadFTP, backupBD );
 
 export default dev;

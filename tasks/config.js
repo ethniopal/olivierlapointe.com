@@ -36,6 +36,14 @@ const ftp = {
     dir: '/public_html'
 }
 
+const connDB = {
+    db: '',
+    host: 'localhost:3309',
+    user: '_root',
+    pass: '',
+}
+
+
 const themeWP = basePath + distDir + '/wp-content/themes/' + config.name; //à modifier si le chemin wordpress change
 const uploadWP = basePath + distDir + '/wp-content/uploads'; //à modifier si le chemin wordpress change
 
@@ -67,4 +75,4 @@ switch (config.type) {
         break;
 }
 
-export { basePath, srcDir, distDir, config, themeWP,  uploadWP, ftp };
+export { basePath, srcDir, distDir, config, themeWP,  uploadWP, ftp, connDB};

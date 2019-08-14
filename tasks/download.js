@@ -30,6 +30,7 @@ function downloadFiles(done) {
             .pipe(decompress({strip: 1}))
             .pipe(dest(basePath + distDir))
             .pipe(notify({message: 'TASK: unzip completed! 💯'}))
+            .pipe(deleteDownload())
 
     }
     else{
@@ -47,5 +48,5 @@ function deleteDownload() {
 }
 
 export {
-    downloadFiles, deleteDownload
+    downloadFiles
 }
