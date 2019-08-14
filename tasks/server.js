@@ -32,7 +32,7 @@ function server(done) {
             const url = await ngrok.connect(configData.proxy);
             console.log(" --------------------------------------");
             console.log("Lien ngrok:", url);
-            console.log(" --------------------------------------\n");
+            console.log(" --------------------------------------");
 
         })();
     }
@@ -49,8 +49,6 @@ function server(done) {
 
     //initie le serveur
     browser.init(configServer);
-
-
 
     done();
 }

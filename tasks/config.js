@@ -15,6 +15,7 @@ const config = {
     img: {
         src: basePath + srcDir + '/img',
         dist: basePath + distDir + '/img',
+        ext: 'png,jpg,jpeg,gif,svg,svgz,webp',
         quality: 60,
     },
     js: {
