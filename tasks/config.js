@@ -7,7 +7,7 @@ const config = {
     name: 'theme2019', //Nom du thème/projet (sans espace ni de caractère accentué)
     proxy: 'http://dev.gulp', //Url local, laisser vide si désire l'utiliser sans sous-domaine ex.: http://dev.test/
     type: '',  //Valeur possible : wp, laravel, html, react
-
+    server: 'wamp', //création automatique des virtuals hosts, selon le proxy et le chemin public
     css: {
         src: basePath + srcDir + '/scss',
         dist: basePath + distDir,
