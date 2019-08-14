@@ -20,7 +20,11 @@ const config = {
     js: {
         src: basePath + srcDir + '/js',
         dist: basePath + distDir + '/js',
-        mainFile: 'main.js',
+        entry:{
+            main:['./main.js'],
+            // autre:['./main.js'], //Si on veut un autre fichier bundle JS
+        },
+        filename:'[name].bundle.js',
     },
     theme: {
         src: basePath + srcDir,

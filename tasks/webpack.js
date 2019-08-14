@@ -5,18 +5,19 @@ import webpack from 'webpack'
 import process from 'process'
 
 const isProduction = (process.env.NODE_ENV === 'production')
+const {js} = configData;
 
 let config = {
     mode: isProduction ? "production" : "development",
 
-    entry: ['./main.js'], //ajoutez les fichiers à bundler
+    entry: js.entry, //ajoutez les fichiers à bundler
 
     output: {
-        filename: 'bundle.js',
-        path:  path.resolve(__dirname, '.' + configData.js.dist)
+        filename: js.filename,
+        path:  path.resolve(__dirname, '.' + js.dist)
     },
 
-    context: path.resolve(__dirname, '.' + configData.js.src),
+    context: path.resolve(__dirname, '.' + js.src),
 
     devtool: false,
     plugins:  [
