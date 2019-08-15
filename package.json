@@ -5,7 +5,12 @@
   "scripts": {
     "init": "gulp init --require @babel/register --gulpfile tasks",
     "dev": "gulp --require @babel/register --gulpfile tasks",
-    "build": "gulp build --require @babel/register --gulpfile tasks"
+    "build": "gulp build --require @babel/register --gulpfile tasks",
+    "clean": "gulp clean --require @babel/register --gulpfile tasks",
+    "resize": "gulp resize --require @babel/register --gulpfile tasks",
+    "js": "gulp js --require @babel/register --gulpfile tasks",
+    "css": "gulp css --require @babel/register --gulpfile tasks",
+    "copy": "gulp copy --require @babel/register --gulpfile tasks"
   },
   "repository": {
     "type": "git",
@@ -32,6 +37,7 @@
     "gulp-decompress": "^2.0.2",
     "gulp-download2": "^1.0.2",
     "gulp-imagemin": "^6.0.0",
+    "gulp-images-resizer": "0.0.7",
     "gulp-merge-media-queries": "^0.2.1",
     "gulp-notify": "^3.2.0",
     "gulp-postcss": "^8.0.0",

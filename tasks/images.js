@@ -7,6 +7,8 @@ import imageminZopfli   from 'imagemin-zopfli';
 import imageminMozjpeg  from 'imagemin-mozjpeg'; //need to run 'brew install libpng'
 import imageminGiflossy from 'imagemin-giflossy';
 
+import resizer          from 'gulp-images-resizer';
+
 import cache            from 'gulp-cache';
 import notify           from 'gulp-notify' //afficher notification
 
@@ -113,6 +115,26 @@ function optimiseImages (){
         .pipe(notify({message: 'TASK: "images optimized" Completed! 💯', onLast: true}));
 }
 
+
+/**
+ * Permet de redimentionner les images Selon se qui est inscrit dans le tableau project.img.transform
+ * @returns {*}
+ */
+function resizeImage() {
+    return src('img/original/**/*.*', {since: lastRun(resizeImage)})
+        .pipe(resizer({
+            format: '*',
+            width: 900,
+            height: 900,
+            quality:70,
+            Crop:false
+        }))
+        // .pipe(rename(function (path) {
+        //     path.basename = path.basename.substring(2);
+        //     path.basename = path.basename.slice(0, path.basename.indexOf('-'))
+        // }))
+        .pipe(dest('img/'));
+};
 export {
-    optimiseImages, optimiseImagesWp
+    optimiseImages, optimiseImagesWp, resizeImage
 }
