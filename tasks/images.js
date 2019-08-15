@@ -121,7 +121,9 @@ function optimiseImages (){
  * @returns {*}
  */
 function resizeImage() {
-    return src('img/original/**/*.*', {since: lastRun(resizeImage)})
+    const srcImg = `${img.src}/resize${search}`;
+
+    return src(srcImg, {since: lastRun(resizeImage)})
         .pipe(resizer({
             format: '*',
             width: 900,
@@ -133,7 +135,7 @@ function resizeImage() {
         //     path.basename = path.basename.substring(2);
         //     path.basename = path.basename.slice(0, path.basename.indexOf('-'))
         // }))
-        .pipe(dest('img/'));
+        .pipe(dest(img.dist + '/resize'));
 };
 export {
     optimiseImages, optimiseImagesWp, resizeImage
