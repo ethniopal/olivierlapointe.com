@@ -10,7 +10,8 @@
     "resize": "gulp resize --require @babel/register --gulpfile tasks",
     "js": "gulp js --require @babel/register --gulpfile tasks",
     "css": "gulp css --require @babel/register --gulpfile tasks",
-    "copy": "gulp copy --require @babel/register --gulpfile tasks"
+    "copy": "gulp copy --require @babel/register --gulpfile tasks",
+    "vhost": "gulp vhost --require @babel/register --gulpfile tasks"
   },
   "repository": {
     "type": "git",
