@@ -38,7 +38,7 @@ export const resize  = series(resizeImage);
 export const js = series(scripts);
 export const css  = series(styles);
 export const copy  = series(copyFiles);
-export const sql  = series(database);
+export const sql  = series(createDatabase);
 export const vhost  = series(wamp);
 
 

@@ -1,7 +1,7 @@
 import {config, basePath, distDir} from "./config.js";
 
-import fs     from "fs";
-import mysql  from 'mysql';
+import fs from "fs";
+import mysql from 'mysql';
 
 const {db, host, port, user, pass, files} = config.connDB;
 
@@ -10,10 +10,12 @@ let connection;
 /**
  * Éxécution des scripts
  */
-export default function sql (done){
+export default function sql(done) {
 
-    connectDB();
-    createDB();
+    if(db || files){
+        connectDB();
+        createDB();
+    }
     done();
 }
 
@@ -30,64 +32,91 @@ function connectDB() {
         multipleStatements: true
     });
 
+    connection.on('error', () => {
+        endConnection();
+    })
 }
-
 
 
 /**
  * Création de la base de donnée initial
  * @param done
  */
-function createDB (){
+function createDB() {
 
     //se connecte
-    connection.connect(function(err) {
-        if (err) throw err;
-        //Crée la base de données si elle n'existe pas
-        connection.query(`CREATE DATABASE IF NOT EXISTS ${db}`, function (err, result) {
-            if (err) throw err;
-            console.log(`Database ${db} created`);
+    connection.connect(function (err) {
+        if (err)  throw err
 
-            //Force l'utilisation de celle-ci
-            connection.query(`USE ${db}`, function (err, result) {
+
+        if (db) {
+            //Crée la base de données si elle n'existe pas
+            connection.query(`CREATE DATABASE IF NOT EXISTS ${db}`, function (err, result) {
                 if (err) throw err;
-                console.log(`USE : ${db}`);
+                console.log(`Database ${db} created`);
 
+                //Force l'utilisation de celle-ci
+                connection.query(`USE ${db}`, function (err, result) {
+                    if (err) throw err;
+                    console.log(`USE : ${db}`);
 
-                //execute les fichier sql s'il y en a
-                if(files.length > 0) {
+                    runSqlFile(); // exécute la liste des fichiers inscrit dans le fichier config
 
-                    //vérifie tous les fichiers voulus
-                    files.forEach((file, index) => {
-
-                        console.log(index, files.length);
-                        file = file.replace(/^(.\/|..\/)/, file); //s'assure de controlé un minimum le path
-
-                        const fileContent = fs.readFileSync(`./${file}`, "utf8");
-
-                        connection.query(fileContent, function (err, result) {
-                            if (err) throw err;
-                            console.log(`File : ${file} executed`);
-
-                            if((files.length - 1) === index){
-                                connection.end();
-                                connection.destroy();
-                            }
-                        });
-                    });
-                }
+                });
 
             });
 
-        });
+        } else {
+            runSqlFile(); // exécute la liste des fichiers inscrit dans le fichier config
+        }
 
     });
 
+}
 
-    connection.on('error', () => {
-        connection.end();
-        connection.destroy();
-    })
 
+/**
+ * exécute les fichiers sql demandés
+ */
+function runSqlFile() {
+    //execute les fichier sql s'il y en a
+    if (files.length > 0) {
+
+        //vérifie tous les fichiers voulus
+        files.forEach((file, index) => {
+
+            try {
+
+                file = file.replace(/^(.\/|..\/)/, file); //s'assure de controlé un minimum le path
+
+                const fileContent = fs.readFileSync(`./${file}`, "utf8");
+
+                connection.query(fileContent, function (err, result) {
+                    if (err) throw err;
+                    console.log(`File : ${file} executed`);
+
+                    if ((files.length - 1) === index) {
+                        endConnection();
+                    }
+                });
+
+            } catch {
+                console.log(`Error in file : ${file}`)
+                if ((files.length - 1) === index) {
+                    endConnection();
+                }
+            }
+        });
+
+    }
+}
+
+
+/**
+ * Fermeture de la connexion
+ */
+function endConnection() {
+    connection.end();
+    connection.destroy();
 
 }
