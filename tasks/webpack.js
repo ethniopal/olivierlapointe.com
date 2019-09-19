@@ -14,7 +14,8 @@ let config = {
 
     output: {
         filename: js.filename,
-        path:  path.resolve(__dirname, '.' + js.dist)
+        path:  path.resolve(__dirname, '.' + js.dist),
+        chunkFilename: "vendors.bundle.js"
     },
 
     context: path.resolve(__dirname, '.' + js.src),
@@ -41,8 +42,11 @@ let config = {
               node_vendors: {
                   test: /[\\/]node_modules[\\/]/,
                   chunks: 'all',
-                  priority: 1
+                  priority: 1,
               }
+          },
+          chunks (chunk) {
+              return chunk.name
           }
       }
     },
