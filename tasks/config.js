@@ -8,14 +8,13 @@ const config = {
     type: '',  //Valeur possible : wp, laravel, html, react
     server: 'wamp', //création automatique des virtuals hosts, selon le proxy et le chemin public, il faudra indiqué le chemin d'installation plus bas, laisser vide si pas sur wamp
     connDB: {
-        db: 'patate', // à modifier
         host: 'localhost',
         port: 3306,
         user: 'root',
         pass: '',
-        files: [ //fichier(s) sql a partir de la racine à exécuter dans la base de données
-            'test.sql',
-            'saga.sql'
+        db: '', // à modifier
+        files: [ //fichier(s) sql a partir de la racine à exécuter dans la base de données, ne pas inclure
+
         ]
     },
     css: {
