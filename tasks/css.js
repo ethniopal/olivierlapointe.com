@@ -35,9 +35,9 @@ function styles() {
     return src([
        // config.css.src + "/style.scss",
         config.css.src + "/**/*.scss",
-        '!./scss/_bootstrap/bootstrap.scss',
-        '!./scss/_bootstrap/bootstrap-grid.scss',
-        '!./scss/_bootstrap/bootstrap-reboot.scss'
+        '!'+ config.css.src +'/_bootstrap/bootstrap.scss',
+        '!'+ config.css.src +'/_bootstrap/bootstrap-grid.scss',
+        '!'+ config.css.src +'/_bootstrap/bootstrap-reboot.scss'
     ], {allowEmpty: true})
         .pipe(sourcemaps.init())
 

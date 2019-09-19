@@ -3,11 +3,21 @@ const srcDir = 'src';
 const distDir = 'www';
 
 const config = {
-
     name: 'theme2019', //Nom du thème/projet (sans espace ni de caractère accentué)
     proxy: 'http://dev.gulp', //Url local, laisser vide si désire l'utiliser sans sous-domaine ex.: http://dev.test/
     type: '',  //Valeur possible : wp, laravel, html, react
-    server: 'wamp', //création automatique des virtuals hosts, selon le proxy et le chemin public, laisser vide si pas sur wamp
+    server: 'wamp', //création automatique des virtuals hosts, selon le proxy et le chemin public, il faudra indiqué le chemin d'installation plus bas, laisser vide si pas sur wamp
+    connDB: {
+        db: 'patate', // à modifier
+        host: 'localhost',
+        port: 3306,
+        user: 'root',
+        pass: '',
+        files: [ //fichier(s) sql a partir de la racine à exécuter dans la base de données
+            'test.sql',
+            'saga.sql'
+        ]
+    },
     css: {
         src: basePath + srcDir + '/scss',
         dist: basePath + distDir,
@@ -31,23 +41,20 @@ const config = {
         src: basePath + srcDir,
         dist: basePath + distDir,
     },
-
+    apache: { //afin que les vhost et execution de wampserver se fasse automatiquement
+        exe: 'I:\\Job\\wamp64\\wampmanager.exe',
+        dir: 'I:\\Job\\wamp64\\bin\\apache\\apache2.4.39'
+    }
 };
+
+
 
 const ftp = {
     host: '184.107.112.54',
     user: '',
     pass: '',
     dir: '/public_html'
-}
-
-const connDB = {
-    db: '',
-    host: 'localhost:3309',
-    user: '_root',
-    pass: '',
-}
-
+};
 
 const themeWP = basePath + distDir + '/wp-content/themes/' + config.name; //à modifier si le chemin wordpress change
 const uploadWP = basePath + distDir + '/wp-content/uploads'; //à modifier si le chemin wordpress change
@@ -80,4 +87,4 @@ switch (config.type) {
         break;
 }
 
-export { basePath, srcDir, distDir, config, themeWP,  uploadWP, ftp, connDB};
+export { basePath, srcDir, distDir, config, themeWP,  uploadWP, ftp};

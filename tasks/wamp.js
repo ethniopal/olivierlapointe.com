@@ -1,6 +1,6 @@
 import {config, basePath, distDir} from "./config.js";
-import {src, dest}  from 'gulp';
 
+import npmRun from  'npm-run';
 import fs   from "fs-extra";
 import findInFiles from 'find-in-files';
 import path from 'path';
@@ -16,6 +16,7 @@ function wamp (done){
     if(config.server === 'wamp'){
         createVirtualHost();
         createHost();
+        restartWampServer();
     }
     done();
 }
@@ -26,7 +27,8 @@ function wamp (done){
 function createVirtualHost(){
 
     if(proxy.length > 1 ) {
-        const dir = "D:/Wamp3/bin/apache/apache2.4.35/conf/extra/";
+
+        const dir = `${config.apache.dir}/conf/extra/`;
         const file = "httpd-vhosts.conf";
         const text =  `<VirtualHost *:80>
     ServerName ${proxy}
@@ -88,5 +90,11 @@ function appendFile(dir, file, text, notification){
         })
 }
 
+/**
+ * Fonction qui restarte apache
+ */
+function restartWampServer() {
+    npmRun.exec(config.apache.exe);
+}
 
 export{ wamp }

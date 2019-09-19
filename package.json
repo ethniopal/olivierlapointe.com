@@ -5,8 +5,9 @@
   "scripts": {
     "init": "gulp init --require @babel/register --gulpfile tasks",
     "dev": "gulp --require @babel/register --gulpfile tasks",
-    "build": "gulp build --require @babel/register --gulpfile tasks",
+    "build": "gulp build --require @babel/register --gulpfile tasks NODE_ENV=production",
     "clean": "gulp clean --require @babel/register --gulpfile tasks",
+    "sql": "gulp sql --require @babel/register --gulpfile tasks",
     "resize": "gulp resize --require @babel/register --gulpfile tasks",
     "js": "gulp js --require @babel/register --gulpfile tasks",
     "css": "gulp css --require @babel/register --gulpfile tasks",
@@ -51,6 +52,7 @@
     "mysql": "^2.17.1",
     "mysqldump": "^3.1.0",
     "ngrok": "^3.2.5",
+    "npm-run": "^5.0.1",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "vinyl-ftp": "^0.6.1",
     "webpack": "^4.39.1",

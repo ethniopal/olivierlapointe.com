@@ -26,7 +26,7 @@ function server(done) {
 
     //Vérification s'il y a un proxy
     if(configData.proxy.length > 1){
-        configServer.proxy = configData.proxy;
+        configServer.proxy = configData.proxy; //pour browser sync
         //Activation de ngrok
         (async function() {
             const url = await ngrok.connect(configData.proxy);

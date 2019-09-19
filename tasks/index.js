@@ -8,10 +8,11 @@ import { optimiseImages, optimiseImagesWp , resizeImage }  from './images';
 import { styles }  from './css';
 import { copy as copyFiles }  from './copy';
 import { downloadFiles }  from './download';
-import { createDB }  from './bd';
 import { uploadFTP, backupBD }  from './deploy';
-
 import { wamp }  from './wamp';
+
+import createDatabase from './bd';
+
 
 
 /**
@@ -27,7 +28,7 @@ function watchFiles () {
 }
 
 // Les différentes tâches du gulp
-export const init  = series(cleanInit, cleanDist, generateSrcDirectory, wamp, downloadFiles, createDB );
+export const init  = series(cleanInit, cleanDist, generateSrcDirectory, wamp, createDatabase/*, downloadFiles  */);
 export const dev   = series(parallel(styles, copyFiles, optimiseImages, optimiseImagesWp, scripts), parallel(watchFiles, server));
 export const build = series( cleanDist, parallel(styles, copyFiles, optimiseImages, optimiseImagesWp), scripts, uploadFTP, backupBD );
 
@@ -37,6 +38,7 @@ export const resize  = series(resizeImage);
 export const js = series(scripts);
 export const css  = series(styles);
 export const copy  = series(copyFiles);
+export const sql  = series(database);
 export const vhost  = series(wamp);
 
 
