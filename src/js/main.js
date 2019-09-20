@@ -1,8 +1,7 @@
-import polyfill from 'babel-polyfill';
+import "./modules/lazyLoad";
 
-const test = () => {
-    console.log("test2");
+function init(){
 
 }
 
-test();
+init();

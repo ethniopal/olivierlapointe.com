@@ -43,6 +43,11 @@ let config = {
                   test: /[\\/]node_modules[\\/]/,
                   chunks: 'all',
                   priority: 1,
+              },
+              libs: {
+                  test: /[\\/]libs[\\/]/,
+                  chunks: 'all',
+                  priority: 2,
               }
           },
           chunks (chunk) {
@@ -55,7 +60,7 @@ let config = {
         rules: [
             {
                 test: /\.?js$/,
-                exclude: /(node_modules|bower_components)/,
+                exclude: /(node_modules|bower_components|libs)/,
                 use: {
                     loader: 'babel-loader',
                     options: {
