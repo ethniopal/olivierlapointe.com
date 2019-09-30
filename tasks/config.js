@@ -64,6 +64,17 @@ switch (config.type) {
         config.js.dist = themeWP + '/js';
         config.img.dist = themeWP + '/img';
         config.theme.dist = themeWP;
+
+        config.plugins = {
+            src: themeWP + '/plugins',
+            dist: basePath + distDir + '/wp-content/plugins'
+        };
+
+        config.muplugins = {
+            src: themeWP + '/mu-plugins',
+            dist: basePath + distDir + '/wp-content/mu-plugins'
+        };
+
         break;
     case 'laravel':
         //src
