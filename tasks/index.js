@@ -35,12 +35,13 @@ function watchFiles () {
 }
 
 // Les différentes tâches du gulp
-export const init  = series(cleanInit, cleanDist, generateSrcDirectory, wamp, createDatabase/*, downloadFiles  */);
+export const init  = series(cleanDist, generateSrcDirectory, wamp, createDatabase/*, downloadFiles  */);
 export const dev   = series(parallel(styles, copyFiles, copyPlugins, optimiseImages, optimiseImagesWp, scripts), parallel(watchFiles, server));
 export const build = series( cleanDist, parallel(styles, copyFiles, copyPlugins, optimiseImages, optimiseImagesWp), scripts, uploadFTP, backupBD );
 
 //Les tâches individuel
-export const clean   = series(cleanDist);
+export const cleanDist   = series(cleanDist);
+export const cleanSrc   = series(cleanInit);
 export const resize  = series(resizeImage);
 export const js = series(scripts);
 export const css  = series(styles);
