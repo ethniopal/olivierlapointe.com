@@ -24,9 +24,9 @@ function copyPlugins() {
 
         .pipe(src(
             config.muplugins.src +'/**/*', {allowEmpty: true, since: lastRun(copyPlugins) })
-        ))
+        )
         .pipe(dest(config.muplugins.dist))
-        .pipe(notify({message: 'TASK: Copy completed! 💯', onLast: true}));
+        .pipe(notify({message: 'TASK: Copy completed! 💯', onLast: true}))
 }
 
 

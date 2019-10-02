@@ -12,7 +12,7 @@ let connection;
  */
 export default function sql(done) {
 
-    if(db || files){
+    if(db.length > 1 || files.length > 0){
         connectDB();
         createDB();
     }

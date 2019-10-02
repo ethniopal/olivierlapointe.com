@@ -1,7 +1,6 @@
 import {basePath, srcDir, distDir, config} from "./config.js";
 import {src, dest} from 'gulp';
 import del from 'del'
-import gulpif from 'gulp-if';
 
 
 /**
@@ -39,8 +38,6 @@ function generateSrcDirectory() {
         .pipe(dest( basePath + distDir ))
         .pipe(dest( basePath +'docs/' ))
         .pipe(dest( basePath +'templates/'))
-        .pipe(gulpif(config.type ==='wp' , dest(config.plugins.src)))
-        .pipe(gulpif(config.type ==='wp' , dest(config.muplugins.src)))
 }
 
 

@@ -40,7 +40,7 @@ export const dev   = series(parallel(styles, copyFiles, copyPlugins, optimiseIma
 export const build = series( cleanDist, parallel(styles, copyFiles, copyPlugins, optimiseImages, optimiseImagesWp), scripts, uploadFTP, backupBD );
 
 //Les tâches individuel
-export const cleanDist   = series(cleanDist);
+export const clean   = series(cleanDist);
 export const cleanSrc   = series(cleanInit);
 export const resize  = series(resizeImage);
 export const js = series(scripts);

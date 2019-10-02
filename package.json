@@ -7,7 +7,7 @@
     "dev": "gulp --require @babel/register --gulpfile tasks",
     "build": "gulp build --require @babel/register --gulpfile tasks NODE_ENV=production",
     "cleanSrc": "gulp cleanSrc --require @babel/register --gulpfile tasks",
-    "cleanDist": "gulp cleanDist --require @babel/register --gulpfile tasks",
+    "clean": "gulp clean --require @babel/register --gulpfile tasks",
     "sql": "gulp sql --require @babel/register --gulpfile tasks",
     "resize": "gulp resize --require @babel/register --gulpfile tasks",
     "js": "gulp js --require @babel/register --gulpfile tasks",
